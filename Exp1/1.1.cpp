@@ -20,8 +20,7 @@ int main(int argc, char **argv) {
 	line *a2 = new line(-2, -1,11, 5, "black");
 	li.push_back(*a);
 	li.push_back(*a2);
-	point();
-	glutDisplayFunc(upzeroUpone);
+	glutDisplayFunc(point);
 
 	glutMainLoop();
 }

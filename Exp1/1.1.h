@@ -26,7 +26,7 @@ void point(void);
 
 
 void point(void) {
-
+	glBegin(GL_POINTS);
 	for (auto p : li) {
 		fx = p.fx; fy = p.fy; fx1 = p.fx1; fy1 = p.fy1;
 		color=p.color;
@@ -44,7 +44,8 @@ void point(void) {
 			}
 		}
 	}
-
+	glEnd();
+	glFlush();
 
 }
 void upzeroUpone(void) {
@@ -58,7 +59,7 @@ void upzeroUpone(void) {
 	d2 = 2 * (a + b);
 	
 
-	glBegin(GL_POINTS);
+
 	for (x = fx; x <= fx1; x++) {
 
 		
@@ -72,8 +73,7 @@ void upzeroUpone(void) {
 			d0 += d1;
 		}
 	}
-	glEnd();
-	glFlush();
+
 }
 void upzeroDownone() {
 	int x, y, d0, d1, d2;
