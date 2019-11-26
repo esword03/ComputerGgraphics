@@ -40,6 +40,12 @@ void piontSegment(void)
 	glVertex2i(100, 100);
 
 	glEnd();
+	glBegin(GL_LINES);
+	glVertex2i(30, 30);
+	glVertex2i(200, 200);
+	glVertex2i(30, 30);
+	glVertex2i(200, 30);
+	glEnd();
 
 
 

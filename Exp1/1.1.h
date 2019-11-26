@@ -6,54 +6,98 @@
 #include<string>
 #include<Windows.h>
 #include<GL\glut.h>
+#include<vector>
+#include"line.h"
 using namespace std;
-static int xf;
-static int yf;
-class point {
-public:
-	int x, y, x1, y1;
-	string color;
-	void line();
-	point(int x, int y, int x1, int y1, string color);
-	void upzeroUpone(int x, int y, int x1, int y1, string color);
-	void judgecolor(string);
-};
-point::point(int x, int y, int x1, int y1, string color) {
-	this-> x = x;
-	this-> y = y;
-	this-> x1 = x1;
-	this-> y1 = y1;
-	this-> color = color;
-}
-void point::line() {
-	int a, b, x, y, x1, y1;
-	a = y1 - y;
-	b = x1 - x;
-	if (a / b > 0) {
-		if (a / b < 1) {
-			upzeroUpone(x, y,x1, y1, color);
+
+vector<line> li;
+
+static int a, b, fx, fy, fx1, fy1;
+string color;
+
+
+void  judgecolor(string);
+void upzeroUpone(void);
+void upzeroDownone();
+void downzeroUpone();
+void downzeroDownone();
+void point(void);
+
+
+
+void point(void) {
+
+	for (auto p : li) {
+		fx = p.fx; fy = p.fy; fx1 = p.fx1; fy1 = p.fy1;
+		color=p.color;
+		
+		judgecolor(color);
+		a = fy1 - fy;
+		b = fx - fx1;
+		double c = (double)a / b;
+		if (c < 0) {
+			if (c > -1) {
+				upzeroUpone();
+			}
+			else if (c < -1) {
+				upzeroDownone();
+			}
 		}
 	}
+
+
 }
-void point::upzeroUpone(int x1,int y1,int x2,int y2,string color) {
-	int x, y, d0, d1, d2, a, b;
-	y = y2;
-	a = y2 - y1;
-	b = x2 - x1;
+void upzeroUpone(void) {
+
+	int x, y, d0, d1, d2;
+	y = fy;
+	//a = y2 - y1;
+	//b = x2 - x1;
 	d0 = 2 * a + b;
 	d1 = 2 * a;
 	d2 = 2 * (a + b);
-	glClear(GL_COLOR_BUFFER_BIT);
-	judgecolor(color);
-	for (x = x1; x < x2; x++) {
-		glBegin(GL_POINTS);
+	
+
+	glBegin(GL_POINTS);
+	for (x = fx; x <= fx1; x++) {
+
+		
 		glVertex2i(x, y);
-		glEnd();
-		glFlush();
+
+		if (d0 < 0) {
+			y++;
+			d0 += d2;
+		}
+		else {
+			d0 += d1;
+		}
+	}
+	glEnd();
+	glFlush();
+}
+void upzeroDownone() {
+	int x, y, d0, d1, d2;
+	x = fx;
+	//a = y2 - y1;
+	//b = x2 - x1;
+	d0 = a + 2 * b;
+	d1 = 2 * b;
+	d2 = 2 * (a + b);
+
+	for (y = fy; y <= fy1; y++) {
+
+		glVertex2i(x, y);
+		if (d0 < 0) {
+			x++;
+			d0 += d2;
+		}
+		else {
+			d0 += d1;
+		}
 	}
 }
 
-void point:: judgecolor(string a) {
+void  judgecolor(string a) {
 	if (a == "red") {
 		glColor3ub(255, 0, 0);
 	}
