@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
 	li.push_back(*a8);
 	li.push_back(*a9);
 	li.push_back(*a0);
-	glutDisplayFunc(autoline);
+	glutDisplayFunc(point);
 
 	glutMainLoop();
 }
