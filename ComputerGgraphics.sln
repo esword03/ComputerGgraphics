@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Exp1", "Exp1\Exp1.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Exp2", "Exp2\Exp2.vcxproj", "{C2F30B9B-57DB-41EA-861F-FD0A4BCF4FEF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Exp3", "Exp3\Exp3.vcxproj", "{8DAC318A-C980-45ED-BA31-44622ED38565}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{C2F30B9B-57DB-41EA-861F-FD0A4BCF4FEF}.Release|x64.Build.0 = Release|x64
 		{C2F30B9B-57DB-41EA-861F-FD0A4BCF4FEF}.Release|x86.ActiveCfg = Release|Win32
 		{C2F30B9B-57DB-41EA-861F-FD0A4BCF4FEF}.Release|x86.Build.0 = Release|Win32
+		{8DAC318A-C980-45ED-BA31-44622ED38565}.Debug|x64.ActiveCfg = Debug|x64
+		{8DAC318A-C980-45ED-BA31-44622ED38565}.Debug|x64.Build.0 = Debug|x64
+		{8DAC318A-C980-45ED-BA31-44622ED38565}.Debug|x86.ActiveCfg = Debug|Win32
+		{8DAC318A-C980-45ED-BA31-44622ED38565}.Debug|x86.Build.0 = Debug|Win32
+		{8DAC318A-C980-45ED-BA31-44622ED38565}.Release|x64.ActiveCfg = Release|x64
+		{8DAC318A-C980-45ED-BA31-44622ED38565}.Release|x64.Build.0 = Release|x64
+		{8DAC318A-C980-45ED-BA31-44622ED38565}.Release|x86.ActiveCfg = Release|Win32
+		{8DAC318A-C980-45ED-BA31-44622ED38565}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
