@@ -157,7 +157,6 @@
 //
 //	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);					// 清除颜色和深度缓存
 //	glColor3f(1.0, 0.0, 0.0);
-//	//sun color
 //	glBindTexture(GL_TEXTURE_2D, 3);
 //	GLUquadricObj*  s = gluNewQuadric();
 //
@@ -166,7 +165,7 @@
 //	gluQuadricTexture(s, GL_TRUE);
 //	gluSphere(s, Plants2.size, 50, 40);
 //	gluDeleteQuadric(s);
-//	glBindTexture(GL_TEXTURE_2D, 0);  /* draw sun */
+//	glBindTexture(GL_TEXTURE_2D, 0);
 //
 //
 //	glColor3f(1.0, 1.0, 1.0);
@@ -198,11 +197,10 @@
 //	gluDeleteQuadric(q);
 //	glBindTexture(GL_TEXTURE_2D, 0);
 //
-//	//地球卫星
 //	Plants3.SolarAngle += 1.0f * ROTATION_SPEED;
 //	if (Plants3.SolarAngle >= 360) { Plants3.SolarAngle -= 360; }
 //
-//	// axis rotation
+//
 //
 //	Plants3.OwnAxisAngle += 1.5f;
 //	if (Plants3.OwnAxisAngle >= 360) { Plants3.OwnAxisAngle -= 360; }

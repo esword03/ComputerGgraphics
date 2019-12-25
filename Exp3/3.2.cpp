@@ -35,9 +35,8 @@ float N[5];
 void draw_a_point(float x, float y, float color[]);
 void deBoor();
 void mymouse(int button, int state, int x, int y);
-void dragmouse(int x, int y);
 void keyboard(unsigned char key, int x, int y);
-int getdis(int x, int y);//获取离得最近的点
+int getdis(int x, int y);
 
 
 int main(int argc, char* argv[])
@@ -48,7 +47,7 @@ int main(int argc, char* argv[])
 	glutInitWindowSize(window_width, window_height);
 	glutCreateWindow("绘制B样条曲线");
 	cout << "点击鼠标右键生成曲线" << endl;
-	cout << "点击y后，清空画板" << endl;
+	cout << "点击c后，清空画板" << endl;
 	cout << "按ESC退出" << endl << endl;
 
 	glMatrixMode(GL_PROJECTION);
@@ -59,7 +58,6 @@ int main(int argc, char* argv[])
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glutMouseFunc(&mymouse);
-	glutMotionFunc(&dragmouse);
 	glutKeyboardFunc(&keyboard);
 
 	glutMainLoop();
@@ -115,38 +113,9 @@ void mymouse(int button, int state, int x, int y)
 
 }
 
-void dragmouse(int x, int y)
-{
-	int index = getdis(x, window_height - y);
-	if (OP == 'd' && index != -1)//鼠标范围内有控制点了，可以拖动
-	{
-		//cout << "修改控制点" << input_vertice.size() << ":(" << input_vertice[index].x << ", " << input_vertice[index].y << ")" << endl;
-		input_vertice[index].x = x;
-		input_vertice[index].y = window_height - y;
-
-		control_point = input_vertice;
-
-		//deBoor();
-		glClear(GL_COLOR_BUFFER_BIT);
-		//绘制控制点
-		for (unsigned int i = 0; i < input_vertice.size(); i++)
-			draw_a_point(input_vertice[i].x, input_vertice[i].y, controlpoint_color);
-		//绘制多边形
-		glLineWidth(2.0f);
-		glBegin(GL_LINE_STRIP);
-		glColor3fv(straightline_color);
-		for (unsigned int i = 0; i < input_vertice.size(); i++)
-			glVertex2f(input_vertice[i].x, input_vertice[i].y);
-		glEnd();
-		glFlush();
-
-		deBoor();
-	}
-}
-
 void keyboard(unsigned char key, int x, int y)
 {
-	if (key == 'y') {
+	if (key == 'c') {
 		input_vertice = {};
 		control_point = {};
 		instance = {};
@@ -164,10 +133,6 @@ void deBoor()
 	//cout <<"control_point_size-1=" << n << endl;
 
 	float t[maxn];
-	//均匀B样条
-	/*for (int i = 0; i <= input_vertice.size() + k; i++)
-	t[i] = i + 1;*/
-	//准均匀B样条
 	t[0] = 0;
 	for (int i = 0; i <= k - 1; i++)
 		t[i] = 0;
